@@ -126,6 +126,10 @@
   #define _TMC_INIT(ST, SPMM) tmc_init(stepper##ST, ST##_CURRENT, ST##_MICROSTEPS, ST##_HYBRID_THRESHOLD, SPMM)
 #endif
 
+#ifndef TMC_BAUD_RATE
+  #define TMC_BAUD_RATE 115200
+#endif
+
 //
 // TMC2130 Driver objects and inits
 //
@@ -314,79 +318,79 @@
   void tmc2208_serial_begin() {
     #if AXIS_DRIVER_TYPE(X, TMC2208)
       #ifdef X_HARDWARE_SERIAL
-        X_HARDWARE_SERIAL.begin(115200);
+        X_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperX.beginSerial(115200);
+        stepperX.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(X2, TMC2208)
       #ifdef X2_HARDWARE_SERIAL
-        X2_HARDWARE_SERIAL.begin(115200);
+        X2_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperX2.beginSerial(115200);
+        stepperX2.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(Y, TMC2208)
       #ifdef Y_HARDWARE_SERIAL
-        Y_HARDWARE_SERIAL.begin(115200);
+        Y_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperY.beginSerial(115200);
+        stepperY.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(Y2, TMC2208)
       #ifdef Y2_HARDWARE_SERIAL
-        Y2_HARDWARE_SERIAL.begin(115200);
+        Y2_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperY2.beginSerial(115200);
+        stepperY2.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(Z, TMC2208)
       #ifdef Z_HARDWARE_SERIAL
-        Z_HARDWARE_SERIAL.begin(115200);
+        Z_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperZ.beginSerial(115200);
+        stepperZ.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(Z2, TMC2208)
       #ifdef Z2_HARDWARE_SERIAL
-        Z2_HARDWARE_SERIAL.begin(115200);
+        Z2_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperZ2.beginSerial(115200);
+        stepperZ2.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(E0, TMC2208)
       #ifdef E0_HARDWARE_SERIAL
-        E0_HARDWARE_SERIAL.begin(115200);
+        E0_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperE0.beginSerial(115200);
+        stepperE0.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(E1, TMC2208)
       #ifdef E1_HARDWARE_SERIAL
-        E1_HARDWARE_SERIAL.begin(115200);
+        E1_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperE1.beginSerial(115200);
+        stepperE1.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(E2, TMC2208)
       #ifdef E2_HARDWARE_SERIAL
-        E2_HARDWARE_SERIAL.begin(115200);
+        E2_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperE2.beginSerial(115200);
+        stepperE2.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(E3, TMC2208)
       #ifdef E3_HARDWARE_SERIAL
-        E3_HARDWARE_SERIAL.begin(115200);
+        E3_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperE3.beginSerial(115200);
+        stepperE3.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
     #if AXIS_DRIVER_TYPE(E4, TMC2208)
       #ifdef E4_HARDWARE_SERIAL
-        E4_HARDWARE_SERIAL.begin(115200);
+        E4_HARDWARE_SERIAL.begin(TMC_BAUD_RATE);
       #else
-        stepperE4.beginSerial(115200);
+        stepperE4.beginSerial(TMC_BAUD_RATE);
       #endif
     #endif
   }
