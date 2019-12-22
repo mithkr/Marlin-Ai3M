@@ -81,7 +81,7 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
-#define STRING_CONFIG_H_AUTHOR "(davidramiro)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(mithkr)" // Who made the changes.
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION   // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 CUSTOM_BUILD_VERSION  // will be shown during bootup in line 2
@@ -556,13 +556,13 @@
  *          TMC5130, TMC5130_STANDALONE
  * :['A4988', 'DRV8825', 'LV8729', 'L6470', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2208_STANDALONE // comment out for stock drivers
-#define Y_DRIVER_TYPE  TMC2208_STANDALONE // comment out for stock drivers
-#define Z_DRIVER_TYPE  TMC2208_STANDALONE // comment out for stock drivers
+#define X_DRIVER_TYPE  TMC2208 // comment out for stock drivers
+#define Y_DRIVER_TYPE  TMC2208 // comment out for stock drivers
+#define Z_DRIVER_TYPE  TMC2208 // comment out for stock drivers
 #define X2_DRIVER_TYPE TMC2208_STANDALONE
 #define Y2_DRIVER_TYPE TMC2208_STANDALONE
-#define Z2_DRIVER_TYPE TMC2208_STANDALONE // comment out for stock drivers
-#define E0_DRIVER_TYPE TMC2208_STANDALONE // comment out for stock drivers
+#define Z2_DRIVER_TYPE TMC2208 // comment out for stock drivers
+#define E0_DRIVER_TYPE TMC2208 // comment out for stock drivers
 #define E1_DRIVER_TYPE TMC2208_STANDALONE // comment out for stock drivers
 #define E2_DRIVER_TYPE TMC2208_STANDALONE
 #define E3_DRIVER_TYPE TMC2208_STANDALONE
@@ -1972,7 +1972,7 @@
  * The new version is to be identified by a "TRIGORILLA1.1" lettering
  * on the upper left of the PCB silkscreen.
  */
-#define TRIGORILLA_VERSION 0
+#define TRIGORILLA_VERSION 1
 
 // Enable Anycubic TFT
 #define ANYCUBIC_TFT_MODEL

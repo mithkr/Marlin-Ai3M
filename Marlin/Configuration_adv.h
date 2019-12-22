@@ -1084,18 +1084,70 @@
  * in your `pins_MYBOARD.h` file. (e.g., RAMPS 1.4 uses AUX3 pins `X_CS_PIN 53`, `Y_CS_PIN 49`, etc.).
  * You may also use software SPI if you wish to use general purpose IO pins.
  *
- * You'll also need the TMC2130Stepper Arduino library
- * (https://github.com/teemuatlut/TMC2130Stepper).
+ * You'll also need the TMCStepper Arduino library
+ * (https://github.com/teemuatlut/TMCStepper).
  *
  * To use TMC2208 stepper UART-configurable stepper drivers
  * connect #_SERIAL_TX_PIN to the driver side PDN_UART pin with a 1K resistor.
  * To use the reading capabilities, also connect #_SERIAL_RX_PIN
  * to PDN_UART without a resistor.
  * The drivers can also be used with hardware serial.
+ * If used with software serial, RX and TX pin can be the same and directly connected to PDN_UART pin.
  *
- * You'll also need the TMC2208Stepper Arduino library
- * (https://github.com/teemuatlut/TMC2208Stepper).
+ * You'll also need the TMCStepper Arduino library
+ * (https://github.com/teemuatlut/TMCStepper).
  */
+#if HAS_DRIVER(TMC2208)
+  /**
+   * TMC2208 stepper drivers
+   *
+   * Hardware serial communication ports.
+   * If undefined software serial is used according to the pins below
+   */
+  //#define X_HARDWARE_SERIAL  Serial1
+  //#define X2_HARDWARE_SERIAL Serial1
+  //#define Y_HARDWARE_SERIAL  Serial1
+  //#define Y2_HARDWARE_SERIAL Serial1
+  //#define Z_HARDWARE_SERIAL  Serial1
+  //#define Z2_HARDWARE_SERIAL Serial1
+  //#define E0_HARDWARE_SERIAL Serial1
+  //#define E1_HARDWARE_SERIAL Serial1
+  //#define E2_HARDWARE_SERIAL Serial1
+  //#define E3_HARDWARE_SERIAL Serial1
+  //#define E4_HARDWARE_SERIAL Serial1
+
+  /**
+   * Software serial
+   */
+  #define TMC_BAUD_RATE 19200
+
+  #define X_SERIAL_TX_PIN    11
+  #define X_SERIAL_RX_PIN    11
+  #define X2_SERIAL_TX_PIN   -1
+  #define X2_SERIAL_RX_PIN   -1
+
+  #define Y_SERIAL_TX_PIN    12
+  #define Y_SERIAL_RX_PIN    12
+  #define Y2_SERIAL_TX_PIN   -1
+  #define Y2_SERIAL_RX_PIN   -1
+
+  #define Z_SERIAL_TX_PIN    20
+  #define Z_SERIAL_RX_PIN    -1
+  #define Z2_SERIAL_TX_PIN    4
+  #define Z2_SERIAL_RX_PIN   -1
+
+  #define E0_SERIAL_TX_PIN   21
+  #define E0_SERIAL_RX_PIN   -1
+  #define E1_SERIAL_TX_PIN   -1
+  #define E1_SERIAL_RX_PIN   -1
+  #define E2_SERIAL_TX_PIN   -1
+  #define E2_SERIAL_RX_PIN   -1
+  #define E3_SERIAL_TX_PIN   -1
+  #define E3_SERIAL_RX_PIN   -1
+  #define E4_SERIAL_TX_PIN   -1
+  #define E4_SERIAL_RX_PIN   -1
+#endif
+
 #if HAS_TRINAMIC
 
   #define R_SENSE           0.11  // R_sense resistor for SilentStepStick2130
@@ -1176,7 +1228,7 @@
    * STEALTHCHOP needs to be enabled.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+  #define HYBRID_THRESHOLD
 
   #define X_HYBRID_THRESHOLD     100  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
@@ -1214,7 +1266,7 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  //#define TMC_DEBUG
+  #define TMC_DEBUG
 
   /**
    * M915 Z Axis Calibration
@@ -1235,16 +1287,21 @@
   /**
    * You can set your own advanced settings by filling in predefined functions.
    * A list of available functions can be found on the library github page
-   * https://github.com/teemuatlut/TMC2130Stepper
-   * https://github.com/teemuatlut/TMC2208Stepper
+   * https://github.com/teemuatlut/TMCStepper
    *
    * Example:
    * #define TMC_ADV() { \
-   *   stepperX.diag0_temp_prewarn(1); \
-   *   stepperY.interpolate(0); \
+   *   stepperX.diag0_otpw(1); \
+   *   stepperY.intpol(0); \
+   *   stepperY.en_pwm_mode(1); \     // Enable extremely quiet stepping
+   *   stepperY.pwm_autoscale(1); \
+   *   stepperX.microsteps(256); \
+   *   stepperY.microsteps(256); \
    * }
    */
-  #define TMC_ADV() {  }
+  #define TMC_ADV() { \
+    stepperE0.en_spreadCycle(true); \
+  }
 
 #endif // TMC2130 || TMC2208
 
