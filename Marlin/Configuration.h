@@ -379,10 +379,15 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
+  // PID Autotune results for my i3 Mega-S
+  #define DEFAULT_Kp 13.15
+  #define DEFAULT_Ki 0.93
+  #define DEFAULT_Kd 46.58
+
   // i3 Mega stock v5 hotend, 40W heater cartridge (3.6Ω @ 22°C)
-  #define  DEFAULT_Kp 15.94
-  #define  DEFAULT_Ki 1.17
-  #define  DEFAULT_Kd 54.19
+  //#define  DEFAULT_Kp 15.94
+  //#define  DEFAULT_Ki 1.17
+  //#define  DEFAULT_Kd 54.19
 
   // Ultimaker
   //#define  DEFAULT_Kp 22.2
@@ -436,10 +441,15 @@
 
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
+  // PID Autotune results for my i3 Mega-S
+  #define DEFAULT_bedKp 142.19
+  #define DEFAULT_bedKi 25.52
+  #define DEFAULT_bedKd 198.01
+
   //Anycubic i3 Mega Ultrabase (0.9Ω @ 22°C)
-  #define DEFAULT_bedKp 251.78
-  #define DEFAULT_bedKi 49.57
-  #define DEFAULT_bedKd 319.73
+  //#define DEFAULT_bedKp 251.78
+  //#define DEFAULT_bedKi 49.57
+  //#define DEFAULT_bedKd 319.73
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
@@ -614,14 +624,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 92.6 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.77, 80.23, 400.14, 394 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 500, 500, 6, 60 }
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 6, 30 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -640,7 +650,7 @@
  *   M204 T    Travel Acceleration
  */
 #define DEFAULT_ACCELERATION          1500    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
+#define DEFAULT_RETRACT_ACCELERATION  1500    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
